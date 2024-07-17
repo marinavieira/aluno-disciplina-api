@@ -1,0 +1,208 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Aluno-Disciplina API",
+      "description": "API para gerenciamento de alunos e disciplinas"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "schemes": ["http"],
+    "paths": {
+      "/students": {
+        "get": {
+          "summary": "Obter todos os alunos",
+          "responses": {
+            "200": {
+              "description": "Lista de alunos",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Student"
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Criar um novo aluno",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Student"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Aluno criado"
+            }
+          }
+        }
+      },
+      "/students/{id}": {
+        "put": {
+          "summary": "Atualizar um aluno",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Student"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Aluno atualizado"
+            },
+            "404": {
+              "description": "Aluno não encontrado"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar um aluno",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Aluno deletado"
+            },
+            "404": {
+              "description": "Aluno não encontrado"
+            }
+          }
+        }
+      },
+      "/courses": {
+        "get": {
+          "summary": "Obter todas as disciplinas",
+          "responses": {
+            "200": {
+              "description": "Lista de disciplinas",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Course"
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Criar uma nova disciplina",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Course"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Disciplina criada"
+            }
+          }
+        }
+      },
+      "/courses/{id}": {
+        "put": {
+          "summary": "Atualizar uma disciplina",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Course"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Disciplina atualizada"
+            },
+            "404": {
+              "description": "Disciplina não encontrada"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar uma disciplina",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Disciplina deletada"
+            },
+            "404": {
+              "description": "Disciplina não encontrada"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Student": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "Course": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+  
